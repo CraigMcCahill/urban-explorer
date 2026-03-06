@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# Urban Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A choose-your-own-adventure game in the spirit of Fighting Fantasy: you play an urban explorer entering **Willow House**, an abandoned mansion in East London with a dark past. Choose your gear, move through the building, and discover what’s waiting inside.
 
-Currently, two official plugins are available:
+Built as a front-end-only SPA (React + TypeScript + Vite) that compiles to a static site.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What it does
 
-## React Compiler
+- **Introduction** – Backstory for Willow House and your character before you start.
+- **Gear selection** – Pick two items from a small set (headlamp, respirator mask, aerosol can, crowbar). Your choices affect which paths and options are available.
+- **Room graph** – The house is a graph of rooms (defined in `src/rooms.ts`). Each room has description text and options that can lead to other rooms, grant items, or require items you’re carrying.
+- **Collectibles** – Find items (e.g. an iron key) in the world and use them to unlock new areas.
+- **Inventory** – View current gear in a modal; “You pick up” feedback when you gain items.
+- **Progress** – Current room and inventory are saved in `localStorage` so you can leave and come back later.
+- **Restart** – “Restart & repack gear” returns you to gear selection with a fresh loadout (intro is skipped on restart).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech
 
-## Expanding the ESLint configuration
+- **React 19** + **TypeScript**
+- **Vite** – dev server and static build
+- No backend; all content and logic live in the client.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Development
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Runs the app at `http://localhost:5173` (or the port Vite reports).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Build
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+Output is in `dist/`. Serve that folder with any static host (e.g. GitHub Pages, Netlify, Vercel) for a deployable adventure.
+
+## Project layout
+
+| Path | Purpose |
+|------|--------|
+| `src/rooms.ts` | Room graph, item definitions, option requirements and rewards |
+| `src/App.tsx` | Intro, gear picker, room view, inventory modal, option handling |
+| `src/App.css` | Layout and styling for cards, options, modal, loot banner |
+| `src/index.css` | Global styles and page background |
+
+Edit `rooms.ts` to add rooms, options, items, and story text; the UI will reflect the data.
