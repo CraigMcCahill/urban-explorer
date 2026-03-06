@@ -1,128 +1,30 @@
-import { useEffect, useState } from "react";
 import "./App.css";
 import {
   INVENTORY_ITEMS,
   ROOMS,
   START_ROOM_ID,
-  type ItemId,
   type Room,
-  type RoomOption,
 } from "./rooms";
-
-const ROOM_STORAGE_KEY = "urban-explorer.currentRoom";
-const INVENTORY_STORAGE_KEY = "urban-explorer.inventory";
-const MAX_INVENTORY_ITEMS = 2;
+import {
+  MAX_INVENTORY_ITEMS,
+  useGameStore,
+} from "./store";
 
 function App() {
-  const [currentRoomId, setCurrentRoomId] = useState<string | null>(null);
-  const [inventory, setInventory] = useState<ItemId[]>([]);
-  const [hasChosenInventory, setHasChosenInventory] = useState(false);
-  const [hasSeenIntro, setHasSeenIntro] = useState(false);
-  const [isInventoryOpen, setIsInventoryOpen] = useState(false);
-  const [recentlyAcquiredItems, setRecentlyAcquiredItems] = useState<
-    ItemId[]
-  >([]);
+  const hasSeenIntro = useGameStore((s) => s.hasSeenIntro);
+  const hasChosenInventory = useGameStore((s) => s.hasChosenInventory);
+  const currentRoomId = useGameStore((s) => s.currentRoomId);
+  const inventory = useGameStore((s) => s.inventory);
+  const isInventoryOpen = useGameStore((s) => s.isInventoryOpen);
+  const recentlyAcquiredItems = useGameStore((s) => s.recentlyAcquiredItems);
 
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      setCurrentRoomId(START_ROOM_ID);
-      return;
-    }
-
-    const storedRoomId = window.localStorage.getItem(ROOM_STORAGE_KEY);
-    const storedInventoryRaw =
-      window.localStorage.getItem(INVENTORY_STORAGE_KEY);
-
-    let storedInventory: ItemId[] = [];
-    if (storedInventoryRaw) {
-      try {
-        const parsed = JSON.parse(storedInventoryRaw) as string[];
-        if (Array.isArray(parsed)) {
-          const validIds = new Set<ItemId>(
-            INVENTORY_ITEMS.map((item) => item.id),
-          );
-          storedInventory = parsed.filter((id): id is ItemId =>
-            validIds.has(id as ItemId),
-          );
-        }
-      } catch {
-        // ignore parse errors and start fresh
-      }
-    }
-
-    if (storedInventory.length > 0) {
-      setInventory(storedInventory);
-      setHasChosenInventory(true);
-    }
-
-    if (storedRoomId && ROOMS[storedRoomId]) {
-      setCurrentRoomId(storedRoomId);
-    } else if (storedInventory.length > 0) {
-      setCurrentRoomId(START_ROOM_ID);
-    } else {
-      setCurrentRoomId(null);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (!hasChosenInventory) return;
-
-    window.localStorage.setItem(
-      INVENTORY_STORAGE_KEY,
-      JSON.stringify(inventory),
-    );
-  }, [inventory, hasChosenInventory]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (!currentRoomId || !hasChosenInventory) return;
-
-    if (currentRoomId === START_ROOM_ID) {
-      window.localStorage.removeItem(ROOM_STORAGE_KEY);
-    } else {
-      window.localStorage.setItem(ROOM_STORAGE_KEY, currentRoomId);
-    }
-  }, [currentRoomId, hasChosenInventory]);
-
-  const handleToggleItem = (id: ItemId) => {
-    setInventory((prev) => {
-      const exists = prev.includes(id);
-      if (exists) {
-        return prev.filter((item) => item !== id);
-      }
-
-      if (prev.length >= MAX_INVENTORY_ITEMS) {
-        return prev;
-      }
-
-      return [...prev, id];
-    });
-  };
-
-  const handleConfirmInventory = () => {
-    if (inventory.length !== MAX_INVENTORY_ITEMS) return;
-
-    setHasChosenInventory(true);
-    setCurrentRoomId(START_ROOM_ID);
-  };
-
-  const handleContinueFromIntro = () => {
-    setHasSeenIntro(true);
-  };
-
-  const handleRestart = () => {
-    setInventory([]);
-    setHasChosenInventory(false);
-    setHasSeenIntro(true);
-    setCurrentRoomId(null);
-    setIsInventoryOpen(false);
-
-    if (typeof window !== "undefined") {
-      window.localStorage.removeItem(ROOM_STORAGE_KEY);
-      window.localStorage.removeItem(INVENTORY_STORAGE_KEY);
-    }
-  };
+  const continueFromIntro = useGameStore((s) => s.continueFromIntro);
+  const toggleGearItem = useGameStore((s) => s.toggleGearItem);
+  const confirmInventory = useGameStore((s) => s.confirmInventory);
+  const restart = useGameStore((s) => s.restart);
+  const setCurrentRoomId = useGameStore((s) => s.setCurrentRoomId);
+  const setInventoryOpen = useGameStore((s) => s.setInventoryOpen);
+  const chooseRoomOption = useGameStore((s) => s.chooseRoomOption);
 
   if (!hasSeenIntro) {
     return (
@@ -141,14 +43,14 @@ function App() {
             <h2 className="room-title">Before You Enter</h2>
             <p className="room-description">
               You are an urban explorer – breaking into abandoned buildings to
-              film and document the interior. You’ve been chased by security
+              film and document the interior. You've been chased by security
               guards, almost impaled falling onto railings, and had a knife
               pulled on you by a drug addict. Your channel has thousands of
-              likes and subscribers, but you’ve never seen a ghost and so you
+              likes and subscribers, but you've never seen a ghost and so you
               keep adventuring.
             </p>
             <p className="room-description">
-              Recently you’ve heard a story about an abandoned old mansion in
+              Recently you've heard a story about an abandoned old mansion in
               East London. Built by Sir Edward Dallow in the 18th century,
               Willow House originally stood in its own grounds before being
               swallowed a century later by the Victorian urban sprawl. The house
@@ -179,7 +81,7 @@ function App() {
               <button
                 type="button"
                 className="primary-button"
-                onClick={handleContinueFromIntro}
+                onClick={continueFromIntro}
               >
                 Continue
               </button>
@@ -225,7 +127,7 @@ function App() {
                     className={`inventory-item${
                       selected ? " inventory-item--selected" : ""
                     }`}
-                    onClick={() => handleToggleItem(item.id)}
+                    onClick={() => toggleGearItem(item.id)}
                     disabled={disabled}
                   >
                     <div className="inventory-item-name">{item.name}</div>
@@ -243,12 +145,12 @@ function App() {
                   ? `Choose ${remaining} more item${
                       remaining === 1 ? "" : "s"
                     }.`
-                  : "You’re ready to step into the dark."}
+                  : "You're ready to step into the dark."}
               </span>
               <button
                 type="button"
                 className="primary-button"
-                onClick={handleConfirmInventory}
+                onClick={confirmInventory}
                 disabled={inventory.length !== MAX_INVENTORY_ITEMS}
               >
                 Enter the house
@@ -297,34 +199,6 @@ function App() {
     );
   }
 
-  const handleRoomOptionClick = (option: RoomOption, hasRequiredItems: boolean) => {
-    if (!hasRequiredItems) return;
-
-    setRecentlyAcquiredItems([]);
-
-    if (option.grantedItems && option.grantedItems.length > 0) {
-      setInventory((prev) => {
-        const next = [...prev];
-        const newly: ItemId[] = [];
-
-        for (const id of option.grantedItems ?? []) {
-          if (!next.includes(id)) {
-            next.push(id);
-            newly.push(id);
-          }
-        }
-
-        if (newly.length > 0) {
-          setRecentlyAcquiredItems(newly);
-        }
-
-        return next;
-      });
-    }
-
-    setCurrentRoomId(option.targetRoomId);
-  };
-
   return (
     <div className="app">
       <div className="game-shell">
@@ -339,14 +213,14 @@ function App() {
             <button
               type="button"
               className="secondary-button"
-              onClick={() => setIsInventoryOpen(true)}
+              onClick={() => setInventoryOpen(true)}
             >
               View gear
             </button>
             <button
               type="button"
               className="secondary-button secondary-button--danger"
-              onClick={handleRestart}
+              onClick={restart}
             >
               Restart & repack gear
             </button>
@@ -411,7 +285,7 @@ function App() {
                   className={`option-button${
                     hasRequiredItems ? "" : " option-button--disabled"
                   }`}
-                  onClick={() => handleRoomOptionClick(option, hasRequiredItems)}
+                  onClick={() => chooseRoomOption(option, hasRequiredItems)}
                   disabled={!hasRequiredItems}
                 >
                   <span className="option-main-label">{option.label}</span>
@@ -436,7 +310,7 @@ function App() {
         {isInventoryOpen && (
           <div
             className="inventory-modal-backdrop"
-            onClick={() => setIsInventoryOpen(false)}
+            onClick={() => setInventoryOpen(false)}
           >
             <div
               className="inventory-modal"
@@ -456,7 +330,7 @@ function App() {
                 <button
                   type="button"
                   className="secondary-button"
-                  onClick={() => setIsInventoryOpen(false)}
+                  onClick={() => setInventoryOpen(false)}
                 >
                   Close
                 </button>
@@ -501,4 +375,3 @@ function App() {
 }
 
 export default App;
-
