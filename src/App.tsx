@@ -99,7 +99,14 @@ function App() {
   };
 
   const handleRestart = () => {
-    setCurrentRoomId(START_ROOM_ID);
+    setInventory([]);
+    setHasChosenInventory(false);
+    setCurrentRoomId(null);
+
+    if (typeof window !== "undefined") {
+      window.localStorage.removeItem(ROOM_STORAGE_KEY);
+      window.localStorage.removeItem(INVENTORY_STORAGE_KEY);
+    }
   };
 
   if (!hasChosenInventory) {
@@ -224,7 +231,7 @@ function App() {
             className="secondary-button"
             onClick={handleRestart}
           >
-            Restart from street
+            Restart & repack gear
           </button>
         </header>
 
