@@ -6,6 +6,7 @@ import {
   START_ROOM_ID,
   type ItemId,
   type Room,
+  type RoomOption,
 } from "./rooms";
 
 const ROOM_STORAGE_KEY = "urban-explorer.currentRoom";
@@ -16,6 +17,11 @@ function App() {
   const [currentRoomId, setCurrentRoomId] = useState<string | null>(null);
   const [inventory, setInventory] = useState<ItemId[]>([]);
   const [hasChosenInventory, setHasChosenInventory] = useState(false);
+  const [hasSeenIntro, setHasSeenIntro] = useState(false);
+  const [isInventoryOpen, setIsInventoryOpen] = useState(false);
+  const [recentlyAcquiredItems, setRecentlyAcquiredItems] = useState<
+    ItemId[]
+  >([]);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -32,8 +38,11 @@ function App() {
       try {
         const parsed = JSON.parse(storedInventoryRaw) as string[];
         if (Array.isArray(parsed)) {
+          const validIds = new Set<ItemId>(
+            INVENTORY_ITEMS.map((item) => item.id),
+          );
           storedInventory = parsed.filter((id): id is ItemId =>
-            ["headlamp", "mask", "spray", "crowbar"].includes(id),
+            validIds.has(id as ItemId),
           );
         }
       } catch {
@@ -98,16 +107,88 @@ function App() {
     setCurrentRoomId(START_ROOM_ID);
   };
 
+  const handleContinueFromIntro = () => {
+    setHasSeenIntro(true);
+  };
+
   const handleRestart = () => {
     setInventory([]);
     setHasChosenInventory(false);
+    setHasSeenIntro(true);
     setCurrentRoomId(null);
+    setIsInventoryOpen(false);
 
     if (typeof window !== "undefined") {
       window.localStorage.removeItem(ROOM_STORAGE_KEY);
       window.localStorage.removeItem(INVENTORY_STORAGE_KEY);
     }
   };
+
+  if (!hasSeenIntro) {
+    return (
+      <div className="app">
+        <div className="game-shell">
+          <header className="game-header">
+            <div>
+              <h1 className="game-title">Urban Explorer</h1>
+              <p className="game-tagline">
+                Willow House, East London. Tonight, the camera comes with you.
+              </p>
+            </div>
+          </header>
+
+          <main className="room-card intro-card">
+            <h2 className="room-title">Before You Enter</h2>
+            <p className="room-description">
+              You are an urban explorer – breaking into abandoned buildings to
+              film and document the interior. You’ve been chased by security
+              guards, almost impaled falling onto railings, and had a knife
+              pulled on you by a drug addict. Your channel has thousands of
+              likes and subscribers, but you’ve never seen a ghost and so you
+              keep adventuring.
+            </p>
+            <p className="room-description">
+              Recently you’ve heard a story about an abandoned old mansion in
+              East London. Built by Sir Edward Dallow in the 18th century,
+              Willow House originally stood in its own grounds before being
+              swallowed a century later by the Victorian urban sprawl. The house
+              always had something of a sinister reputation – Sir Edward himself
+              was a libertine of the very worst kind and fled the county after
+              rumours of the murder of a serving girl.
+            </p>
+            <p className="room-description">
+              In the nineteenth century the house was subdivided into slum
+              dwellings and became a place of vice and misery. By the twentieth
+              century the building had been bought by the council and was used
+              as an orphanage. The establishment closed in the nineteen
+              nineties, amongst accusations of abuse with victims talking of a
+              hidden room underneath the house. A police investigation found
+              nothing to substantiate these claims but the building has remained
+              boarded up and abandoned since.
+            </p>
+            <p className="room-description">
+              Tonight you plan to tool up and enter Willow House under the cover
+              of darkness.
+            </p>
+
+            <div className="inventory-footer-row">
+              <span className="inventory-hint">
+                You have your phone and a backpack. Time to choose the rest of
+                your gear.
+              </span>
+              <button
+                type="button"
+                className="primary-button"
+                onClick={handleContinueFromIntro}
+              >
+                Continue
+              </button>
+            </div>
+          </main>
+        </div>
+      </div>
+    );
+  }
 
   if (!hasChosenInventory) {
     const remaining = MAX_INVENTORY_ITEMS - inventory.length;
@@ -132,7 +213,7 @@ function App() {
             </p>
 
             <div className="inventory-grid">
-              {INVENTORY_ITEMS.map((item) => {
+              {INVENTORY_ITEMS.filter((item) => item.canStartWith).map((item) => {
                 const selected = inventory.includes(item.id);
                 const disabled =
                   !selected && inventory.length >= MAX_INVENTORY_ITEMS;
@@ -216,6 +297,34 @@ function App() {
     );
   }
 
+  const handleRoomOptionClick = (option: RoomOption, hasRequiredItems: boolean) => {
+    if (!hasRequiredItems) return;
+
+    setRecentlyAcquiredItems([]);
+
+    if (option.grantedItems && option.grantedItems.length > 0) {
+      setInventory((prev) => {
+        const next = [...prev];
+        const newly: ItemId[] = [];
+
+        for (const id of option.grantedItems ?? []) {
+          if (!next.includes(id)) {
+            next.push(id);
+            newly.push(id);
+          }
+        }
+
+        if (newly.length > 0) {
+          setRecentlyAcquiredItems(newly);
+        }
+
+        return next;
+      });
+    }
+
+    setCurrentRoomId(option.targetRoomId);
+  };
+
   return (
     <div className="app">
       <div className="game-shell">
@@ -226,13 +335,22 @@ function App() {
               An abandoned house. One night. No turning back… mostly.
             </p>
           </div>
-          <button
-            type="button"
-            className="secondary-button"
-            onClick={handleRestart}
-          >
-            Restart & repack gear
-          </button>
+          <div className="header-actions">
+            <button
+              type="button"
+              className="secondary-button"
+              onClick={() => setIsInventoryOpen(true)}
+            >
+              View gear
+            </button>
+            <button
+              type="button"
+              className="secondary-button secondary-button--danger"
+              onClick={handleRestart}
+            >
+              Restart & repack gear
+            </button>
+          </div>
         </header>
 
         <main className="room-card">
@@ -241,11 +359,39 @@ function App() {
 
           <div className="divider" />
 
+          {recentlyAcquiredItems.length > 0 && (
+            <div className="loot-banner">
+              <span className="loot-label">You pick up:</span>
+              <span className="loot-items">
+                {recentlyAcquiredItems
+                  .map(
+                    (id) =>
+                      INVENTORY_ITEMS.find((item) => item.id === id)?.name ??
+                      id,
+                  )
+                  .join(", ")}
+              </span>
+            </div>
+          )}
+
           <div className="options">
             {room.options.map((option) => {
               const hasRequiredItems =
                 !option.requiredItems ||
                 option.requiredItems.every((id) => inventory.includes(id));
+
+              const alreadyHasGrantedItems =
+                option.grantedItems &&
+                option.grantedItems.length > 0 &&
+                option.grantedItems.every((id) => inventory.includes(id));
+
+              if (
+                alreadyHasGrantedItems &&
+                option.grantedItems &&
+                option.targetRoomId === room.id
+              ) {
+                return null;
+              }
 
               const requirementLabel =
                 option.requiredItems && option.requiredItems.length > 0
@@ -265,9 +411,7 @@ function App() {
                   className={`option-button${
                     hasRequiredItems ? "" : " option-button--disabled"
                   }`}
-                  onClick={() =>
-                    hasRequiredItems && setCurrentRoomId(option.targetRoomId)
-                  }
+                  onClick={() => handleRoomOptionClick(option, hasRequiredItems)}
                   disabled={!hasRequiredItems}
                 >
                   <span className="option-main-label">{option.label}</span>
@@ -288,6 +432,69 @@ function App() {
             you dare.
           </span>
         </footer>
+
+        {isInventoryOpen && (
+          <div
+            className="inventory-modal-backdrop"
+            onClick={() => setIsInventoryOpen(false)}
+          >
+            <div
+              className="inventory-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Current gear"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className="inventory-modal-header">
+                <div>
+                  <h2 className="inventory-modal-title">Current gear</h2>
+                  <p className="inventory-modal-subtitle">
+                    Phone and backpack are always with you. The rest is what
+                    you&apos;ve chosen and found.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={() => setIsInventoryOpen(false)}
+                >
+                  Close
+                </button>
+              </div>
+
+              <div className="inventory-modal-body">
+                {inventory.length === 0 ? (
+                  <p className="inventory-empty">
+                    You&apos;re traveling light. Some paths may be harder to
+                    take.
+                  </p>
+                ) : (
+                  <ul className="inventory-list">
+                    {inventory.map((id) => {
+                      const item = INVENTORY_ITEMS.find(
+                        (entry) => entry.id === id,
+                      );
+                      if (!item) return null;
+
+                      return (
+                        <li key={id} className="inventory-list-item">
+                          <div className="inventory-list-pill">
+                            <span className="inventory-list-name">
+                              {item.name}
+                            </span>
+                            <span className="inventory-list-description">
+                              {item.description}
+                            </span>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

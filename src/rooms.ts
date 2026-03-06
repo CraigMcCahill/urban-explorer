@@ -1,9 +1,10 @@
-export type ItemId = "headlamp" | "mask" | "spray" | "crowbar";
+export type ItemId = "headlamp" | "mask" | "spray" | "crowbar" | "iron-key";
 
 export type InventoryItem = {
   id: ItemId;
   name: string;
   description: string;
+  canStartWith: boolean;
 };
 
 export const INVENTORY_ITEMS: InventoryItem[] = [
@@ -11,21 +12,31 @@ export const INVENTORY_ITEMS: InventoryItem[] = [
     id: "headlamp",
     name: "Headlamp",
     description: "See in the dark while keeping your hands free.",
+    canStartWith: true,
   },
   {
     id: "mask",
     name: "Respirator mask",
     description: "Protection against asbestos dust and black mould.",
+    canStartWith: true,
   },
   {
     id: "spray",
     name: "Aerosol can",
     description: "You are an artist as well and like to tag.",
+    canStartWith: true,
   },
   {
     id: "crowbar",
     name: "Small crowbar",
     description: "For stubborn doors, windows, and last-resort defense.",
+    canStartWith: true,
+  },
+  {
+    id: "iron-key",
+    name: "Iron key",
+    description: "Cold, old, and too heavy to be for anything friendly.",
+    canStartWith: false,
   },
 ];
 
@@ -34,6 +45,7 @@ export type RoomOption = {
   label: string;
   targetRoomId: string;
   requiredItems?: ItemId[];
+  grantedItems?: ItemId[];
 };
 
 export type Room = {
@@ -211,6 +223,12 @@ export const ROOMS: Record<string, Room> = {
         targetRoomId: "ending-fridge",
       },
       {
+        id: "search-drawers",
+        label: "Rummage through the drawers for anything useful",
+        targetRoomId: "kitchen",
+        grantedItems: ["iron-key"],
+      },
+      {
         id: "back-to-corridor",
         label: "Slip back into the corridor",
         targetRoomId: "shadow-corridor",
@@ -265,6 +283,12 @@ export const ROOMS: Record<string, Room> = {
         targetRoomId: "lit-room",
       },
       {
+        id: "iron-door",
+        label: "Try the heavy iron door with the unfamiliar keyhole",
+        targetRoomId: "locked-study",
+        requiredItems: ["iron-key"],
+      },
+      {
         id: "random-bedroom",
         label: "Try the nearest bedroom door",
         targetRoomId: "bedroom",
@@ -309,6 +333,19 @@ export const ROOMS: Record<string, Room> = {
         id: "escape-window",
         label: "Open the window and climb back out to the fire escape",
         targetRoomId: "back-alley",
+      },
+    ],
+  },
+  "locked-study": {
+    id: "locked-study",
+    title: "Locked Study",
+    description:
+      "The iron key turns with a reluctant clunk. Inside, a narrow study waits, its desk buried in maps of the city with certain buildings angrily circled. A single chair faces the window, as if expecting you.",
+    options: [
+      {
+        id: "leave-study",
+        label: "Back out quietly and return to the landing",
+        targetRoomId: "upstairs-landing",
       },
     ],
   },
