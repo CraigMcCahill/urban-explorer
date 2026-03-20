@@ -42,7 +42,7 @@ function App() {
           <main className="room-card intro-card">
             <h2 className="room-title">Before You Enter</h2>
             <p className="room-description">
-              You are an urban explorer – breaking into abandoned buildings to
+              You are an urban explorer - breaking into abandoned buildings to
               film and document the interior. You've been chased by security
               guards, almost impaled falling onto railings, and had a knife
               pulled on you by a drug addict. Your channel has thousands of
@@ -51,15 +51,15 @@ function App() {
             </p>
             <p className="room-description">
               Recently you've heard a story about an abandoned old mansion in
-              East London. Built by Sir Edward Dallow in the 18th century,
+              East London. Built by Sir Aubrey de Vere in the 18th century,
               Willow House originally stood in its own grounds before being
               swallowed a century later by the Victorian urban sprawl. The house
-              always had something of a sinister reputation – Sir Edward himself
+              always had something of a sinister reputation - Sir Aubrey himself
               was a libertine of the very worst kind and fled the county after
               rumours of the murder of a serving girl.
             </p>
             <p className="room-description">
-              In the nineteenth century the house was subdivided into slum
+              In the nineteenth century the house was sub-divided into slum
               dwellings and became a place of vice and misery. By the twentieth
               century the building had been bought by the council and was used
               as an orphanage. The establishment closed in the nineteen
@@ -75,8 +75,8 @@ function App() {
 
             <div className="inventory-footer-row">
               <span className="inventory-hint">
-                You have your phone and a backpack. Time to choose the rest of
-                your gear.
+                You have your phone and a backpack. Time to choose what else
+                you will take with you.
               </span>
               <button
                 type="button"
@@ -110,8 +110,8 @@ function App() {
           <main className="room-card inventory-card">
             <h2 className="room-title">Pack Your Gear</h2>
             <p className="room-description">
-              Choose {MAX_INVENTORY_ITEMS} items to carry with you into the
-              house. What you bring will change which paths are open to you.
+              You have your phone and a backpack - what else will you take
+              with you? Choose {MAX_INVENTORY_ITEMS}:
             </p>
 
             <div className="inventory-grid">
