@@ -1,3 +1,9 @@
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 18px;
+  color: #eee;
+}
+
 .app {
   min-height: 100vh;
   display: flex;
@@ -50,7 +56,7 @@
 .game-tagline {
   margin: 0;
   font-size: 0.95rem;
-  color: #9ca3af;
+  color: #eee;
 }
 
 .room-card {
@@ -75,9 +81,9 @@
 
 .room-description {
   margin: 0.25rem 0 0.75rem;
-  font-size: 0.98rem;
+  font-size: 18px;
   line-height: 1.7;
-  color: #cbd5f5;
+  color: #eee;
 }
 
 .divider {
@@ -131,11 +137,11 @@
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.55);
   padding: 0.85rem 1.1rem;
-  font-size: 0.96rem;
+  font-size: 18px;
   font-weight: 500;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  font-family: inherit;
   background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.23), rgba(15, 23, 42, 0.95));
-  color: #e5e7eb;
+  color: #eee;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -184,7 +190,7 @@
 
 .option-requirement {
   font-size: 0.8rem;
-  color: #a5b4fc;
+  color: #eee;
 }
 
 .primary-button,
@@ -256,7 +262,7 @@
   align-items: center;
   margin-top: 0.25rem;
   font-size: 0.78rem;
-  color: #9ca3af;
+  color: #eee;
 }
 
 .footer-text {
@@ -410,7 +416,7 @@
 
 .inventory-item-description {
   font-size: 0.82rem;
-  color: #cbd5f5;
+  color: #eee;
 }
 
 .inventory-footer-row {
@@ -423,7 +429,7 @@
 
 .inventory-hint {
   font-size: 0.82rem;
-  color: #9ca3af;
+  color: #eee;
 }
 
 @media (max-width: 720px) {
@@ -442,7 +448,7 @@
   }
 
   .option-button {
-    font-size: 0.92rem;
+    font-size: 18px;
   }
 
   .inventory-grid {
