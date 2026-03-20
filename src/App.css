@@ -108,7 +108,7 @@ body {
   gap: 0.4rem;
   padding: 0.45rem 0.75rem;
   margin-bottom: 0.6rem;
-  border-radius: 999px;
+  border-radius: 0px;
   background: radial-gradient(circle at top left, rgba(52, 211, 153, 0.18), rgba(15, 23, 42, 0.95));
   border: 1px solid rgba(52, 211, 153, 0.7);
   box-shadow: 0 8px 20px rgba(16, 185, 129, 0.32);
@@ -231,6 +231,16 @@ body {
     inset 0 0 0 1px rgba(255, 233, 210, 0.35);
 }
 
+.primary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+  box-shadow: none;
+  border-color: rgba(120, 96, 77, 0.45);
+  background: linear-gradient(180deg, rgba(72, 60, 52, 0.9), rgba(52, 44, 38, 0.9));
+  color: rgba(238, 238, 238, 0.7);
+}
+
 .secondary-button {
   background: rgba(26, 23, 24, 0.95);
   color: #e5e7eb;
@@ -339,7 +349,7 @@ body {
 }
 
 .inventory-list-pill {
-  border-radius: 4px;
+  border-radius: 0px;
   padding: 0.65rem 0.9rem;
   border: 1px solid rgba(120, 96, 77, 0.7);
   background: linear-gradient(180deg, rgba(31, 25, 25, 0.98), rgba(22, 18, 18, 0.98));
@@ -375,7 +385,7 @@ body {
 }
 
 .inventory-item {
-  border-radius: 4px;
+  border-radius: 0px;
   border: 1px solid rgba(120, 96, 77, 0.6);
   padding: 0.75rem 0.85rem;
   text-align: left;

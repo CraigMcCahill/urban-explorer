@@ -110,7 +110,7 @@ export const gameStore = createStore<GameState & GameActions>()((set) => ({
     set({
       inventory: [],
       hasChosenInventory: false,
-      hasSeenIntro: true,
+      hasSeenIntro: false,
       currentRoomId: null,
       isInventoryOpen: false,
       recentlyAcquiredItems: [],
