@@ -16,20 +16,17 @@ body {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  border-radius: 24px;
+  border-radius: 6px;
   padding: 1.5rem 1.75rem 1.75rem;
-  background: radial-gradient(circle at top left, rgba(111, 255, 233, 0.12), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(255, 111, 203, 0.12), transparent 55%),
-    linear-gradient(145deg, rgba(5, 8, 14, 0.95), rgba(10, 14, 25, 0.98));
+  background:
+    linear-gradient(180deg, rgba(10, 10, 12, 0.98), rgba(17, 16, 20, 0.98));
   box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(255, 255, 255, 0.03);
+    0 18px 36px rgba(0, 0, 0, 0.82),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  border: 1px solid rgba(124, 103, 83, 0.45);
 }
 
 .game-header {
@@ -47,10 +44,12 @@ body {
 
 .game-title {
   font-size: clamp(1.9rem, 2.4vw, 2.25rem);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   margin: 0 0 0.35rem;
   color: #e5e7eb;
+  font-family: "UnifrakturCook", cursive;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .game-tagline {
@@ -61,13 +60,13 @@ body {
 
 .room-card {
   margin-top: 0.25rem;
-  border-radius: 20px;
+  border-radius: 4px;
   padding: 1.75rem 1.75rem 1.5rem;
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.08), transparent 60%),
-    linear-gradient(155deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.94));
+  background:
+    linear-gradient(180deg, rgba(20, 17, 19, 0.98), rgba(14, 12, 14, 0.98));
   box-shadow:
-    0 18px 40px rgba(15, 23, 42, 0.95),
-    inset 0 0 0 1px rgba(148, 163, 184, 0.25);
+    0 8px 22px rgba(0, 0, 0, 0.75),
+    inset 0 0 0 1px rgba(120, 96, 77, 0.35);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -77,6 +76,9 @@ body {
   margin: 0;
   font-size: 1.4rem;
   color: #e5e7eb;
+  font-family: "UnifrakturCook", cursive;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .room-description {
@@ -92,9 +94,9 @@ body {
   background: linear-gradient(
     to right,
     transparent,
-    rgba(55, 65, 81, 0.7),
-    rgba(148, 163, 184, 0.9),
-    rgba(55, 65, 81, 0.7),
+    rgba(90, 74, 58, 0.45),
+    rgba(147, 123, 98, 0.7),
+    rgba(90, 74, 58, 0.45),
     transparent
   );
   margin: 0.25rem 0 0.75rem;
@@ -134,13 +136,13 @@ body {
 .option-button {
   width: 100%;
   text-align: left;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.55);
+  border-radius: 4px;
+  border: 1px solid rgba(120, 96, 77, 0.65);
   padding: 0.85rem 1.1rem;
   font-size: 18px;
   font-weight: 500;
   font-family: inherit;
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.23), rgba(15, 23, 42, 0.95));
+  background: linear-gradient(180deg, rgba(34, 28, 28, 0.98), rgba(23, 19, 20, 0.98));
   color: #eee;
   cursor: pointer;
   display: flex;
@@ -163,12 +165,12 @@ body {
 
 .option-button:hover {
   transform: translateY(-1px);
-  border-color: #fbbf24;
+  border-color: #b58a60;
   box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.8),
-    0 0 0 1px rgba(248, 250, 252, 0.03);
-  background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.23), rgba(15, 23, 42, 0.98));
-  color: #fef9c3;
+    0 8px 20px rgba(0, 0, 0, 0.88),
+    inset 0 0 0 1px rgba(181, 138, 96, 0.25);
+  background: linear-gradient(180deg, rgba(42, 34, 31, 0.98), rgba(29, 23, 22, 0.98));
+  color: #f0e7dd;
 }
 
 .option-button:active {
@@ -179,9 +181,9 @@ body {
 .option-button--disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  border-color: rgba(75, 85, 99, 0.9);
-  background: radial-gradient(circle at top left, rgba(31, 41, 55, 0.9), rgba(15, 23, 42, 0.98));
-  color: #9ca3af;
+  border-color: rgba(72, 64, 56, 0.7);
+  background: linear-gradient(180deg, rgba(24, 22, 24, 0.95), rgba(18, 16, 17, 0.95));
+  color: #9d978f;
 }
 
 .option-main-label {
@@ -195,7 +197,7 @@ body {
 
 .primary-button,
 .secondary-button {
-  border-radius: 999px;
+  border-radius: 4px;
   border: 1px solid transparent;
   padding: 0.6rem 1.1rem;
   font-size: 0.9rem;
@@ -215,35 +217,33 @@ body {
 }
 
 .primary-button {
-  background: linear-gradient(135deg, #f97316, #facc15);
-  color: #111827;
+  background: linear-gradient(180deg, #6f5240, #523d30);
+  color: #f3e6d8;
   box-shadow:
-    0 12px 30px rgba(15, 23, 42, 0.9),
-    0 0 0 1px rgba(248, 250, 252, 0.35);
+    0 8px 20px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255, 233, 210, 0.2);
 }
 
 .primary-button:hover {
   transform: translateY(-1px);
   box-shadow:
-    0 16px 36px rgba(15, 23, 42, 0.95),
-    0 0 0 1px rgba(248, 250, 252, 0.6);
+    0 12px 26px rgba(0, 0, 0, 0.82),
+    inset 0 0 0 1px rgba(255, 233, 210, 0.35);
 }
 
 .secondary-button {
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(26, 23, 24, 0.95);
   color: #e5e7eb;
-  border-color: rgba(148, 163, 184, 0.6);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  border-color: rgba(120, 96, 77, 0.6);
 }
 
 .secondary-button:hover {
   transform: translateY(-1px);
-  border-color: #facc15;
-  color: #fef9c3;
+  border-color: #b58a60;
+  color: #f0e7dd;
   box-shadow:
-    0 12px 28px rgba(15, 23, 42, 0.9),
-    0 0 0 1px rgba(248, 250, 252, 0.08);
+    0 8px 20px rgba(0, 0, 0, 0.85),
+    inset 0 0 0 1px rgba(181, 138, 96, 0.25);
 }
 
 .secondary-button--danger {
@@ -283,13 +283,12 @@ body {
 .inventory-modal {
   width: 100%;
   max-width: 540px;
-  border-radius: 20px;
+  border-radius: 4px;
   padding: 1.5rem 1.5rem 1.4rem;
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 65%),
-    linear-gradient(155deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.96));
+  background: linear-gradient(180deg, rgba(16, 14, 16, 0.98), rgba(11, 9, 10, 0.98));
   box-shadow:
-    0 22px 50px rgba(0, 0, 0, 0.9),
-    0 0 0 1px rgba(148, 163, 184, 0.45);
+    0 16px 36px rgba(0, 0, 0, 0.9),
+    inset 0 0 0 1px rgba(120, 96, 77, 0.45);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -340,10 +339,10 @@ body {
 }
 
 .inventory-list-pill {
-  border-radius: 999px;
+  border-radius: 4px;
   padding: 0.65rem 0.9rem;
-  border: 1px solid rgba(148, 163, 184, 0.8);
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.23), rgba(15, 23, 42, 0.98));
+  border: 1px solid rgba(120, 96, 77, 0.7);
+  background: linear-gradient(180deg, rgba(31, 25, 25, 0.98), rgba(22, 18, 18, 0.98));
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
@@ -376,11 +375,11 @@ body {
 }
 
 .inventory-item {
-  border-radius: 16px;
-  border: 1px solid rgba(148, 163, 184, 0.6);
+  border-radius: 4px;
+  border: 1px solid rgba(120, 96, 77, 0.6);
   padding: 0.75rem 0.85rem;
   text-align: left;
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), rgba(15, 23, 42, 0.98));
+  background: linear-gradient(180deg, rgba(29, 24, 25, 0.98), rgba(21, 17, 18, 0.98));
   color: #e5e7eb;
   cursor: pointer;
   display: flex;
@@ -401,12 +400,12 @@ body {
 }
 
 .inventory-item--selected {
-  border-color: #facc15;
-  background: radial-gradient(circle at top left, rgba(250, 204, 21, 0.24), rgba(15, 23, 42, 0.98));
-  color: #fef9c3;
+  border-color: #b58a60;
+  background: linear-gradient(180deg, rgba(55, 42, 36, 0.98), rgba(37, 29, 25, 0.98));
+  color: #f0e7dd;
   box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(248, 250, 252, 0.1);
+    0 8px 20px rgba(0, 0, 0, 0.75),
+    inset 0 0 0 1px rgba(181, 138, 96, 0.25);
 }
 
 .inventory-item-name {
@@ -435,7 +434,7 @@ body {
 @media (max-width: 720px) {
   .game-shell {
     padding: 1.35rem 1.1rem 1.4rem;
-    border-radius: 18px;
+    border-radius: 4px;
   }
 
   .game-header {
