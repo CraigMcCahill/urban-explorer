@@ -158,8 +158,8 @@ body {
 }
 
 .option-button::after {
-  content: '↪';
-  font-size: 0.9rem;
+  content: '⇸';
+  font-size: 1.35rem;
   opacity: 0.7;
 }
 
@@ -389,6 +389,7 @@ body {
   border: 1px solid rgba(120, 96, 77, 0.6);
   padding: 0.75rem 0.85rem;
   text-align: left;
+  font-family: Georgia, "Times New Roman", Times, serif;
   background: linear-gradient(180deg, rgba(29, 24, 25, 0.98), rgba(21, 17, 18, 0.98));
   color: #e5e7eb;
   cursor: pointer;
@@ -402,6 +403,12 @@ body {
     background 140ms ease,
     color 140ms ease,
     opacity 120ms ease;
+}
+
+/* Ensure all nested text inside inventory buttons uses the same serif stack */
+.inventory-item,
+.inventory-item * {
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .inventory-item[disabled] {
@@ -421,11 +428,13 @@ body {
 .inventory-item-name {
   font-size: 0.96rem;
   font-weight: 600;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .inventory-item-description {
   font-size: 0.82rem;
   color: #eee;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .inventory-footer-row {
