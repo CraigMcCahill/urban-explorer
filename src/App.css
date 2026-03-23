@@ -188,11 +188,16 @@ body {
 
 .option-main-label {
   font-weight: 500;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .option-requirement {
   font-size: 0.8rem;
   color: #eee;
+  margin-left: auto;
+  white-space: nowrap;
+  text-align: right;
 }
 
 .primary-button,
@@ -467,6 +472,23 @@ body {
 
   .option-button {
     font-size: 18px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .option-button::after {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .option-requirement {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0.2rem;
+    white-space: normal;
+    text-align: left;
   }
 
   .inventory-grid {
