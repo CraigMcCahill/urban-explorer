@@ -1102,7 +1102,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "unlock-tomb",
-        label: "Unlock the door (requires iron key) - tomb",
+        label: "Unlock the door - tomb",
         targetRoomId: "tomb",
         requiredItems: ["iron-key"],
       },
@@ -1122,14 +1122,14 @@ export const ROOMS: Record<string, Room> = {
       {
         id: "futile-fight",
         label:
-          "Swing your crowbar at the fiend (requires crowbar) - futile-fight",
+          "Swing your crowbar at the fiend - futile-fight",
         targetRoomId: "futile-fight",
         requiredItems: ["crowbar"],
       },
       {
         id: "vampire-at-bay",
         label:
-          "Use the sign of the cross to drive off the undead (requires silver crucifix) - vampire-at-bay",
+          "Use the sign of the cross to drive off the undead - vampire-at-bay",
         targetRoomId: "vampire-at-bay",
         requiredItems: ["silver-crucifix"],
       },
