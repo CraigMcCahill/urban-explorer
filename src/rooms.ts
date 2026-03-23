@@ -47,7 +47,8 @@ export const INVENTORY_ITEMS: InventoryItem[] = [
   {
     id: "silver-crucifix",
     name: "Silver crucifix",
-    description: "A cold silver holy symbol. It feels like it watches you back.",
+    description:
+      "A cold silver holy symbol. It feels like it watches you back.",
     canStartWith: false,
   },
 ];
@@ -480,7 +481,7 @@ export const ROOMS: Record<string, Room> = {
       {
         id: "restart-after-photos",
         label: "Drop the photo and bolt back to the street",
-        targetRoomId: "street-outside foo",
+        targetRoomId: "street-outside",
       },
     ],
   },
@@ -535,7 +536,7 @@ export const ROOMS: Record<string, Room> = {
     id: "balcony",
     title: "Balcony",
     description:
-      "Climbing the stairs you reach the balcony. Landings lead away from the balcony east and west; to the east you can faintly hear some music playing.",
+      "Climbing the stairs you reach the balcony. Landings lead away from the balcony east and west; the stairs behind you descend back to the hallway. To the east you can faintly hear some music playing.",
     options: [
       {
         id: "music-east",
@@ -547,6 +548,11 @@ export const ROOMS: Record<string, Room> = {
         label: "Investigate to the west - west-landing",
         targetRoomId: "west-landing",
       },
+      {
+        id: "back-downstairs",
+        label: "Go back down the stairs - hallway",
+        targetRoomId: "hallway",
+      },
     ],
   },
   parlour: {
@@ -557,7 +563,8 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "north-to-dining",
-        label: "Open the door to the north and find the source of the stench - dining-room",
+        label:
+          "Open the door to the north and find the source of the stench - dining-room",
         targetRoomId: "dining-room",
       },
       {
@@ -571,7 +578,7 @@ export const ROOMS: Record<string, Room> = {
     id: "dining-room",
     title: "Dining Room",
     description:
-      "Shining your torch into the room reveals a macabre sight. In the centre of the room stands a filthy dining table upon which lies a half-decayed cadaver of what appears to have been a dog amongst smeared and broken plates.\n\nGetting closer you spot a mouldering collar; confirm your suspicions the tag reads \"Max\". A door hangs open to the west, another to the south.",
+      'Shining your torch into the room reveals a macabre sight. In the centre of the room stands a filthy dining table upon which lies a half-decayed cadaver of what appears to have been a dog amongst smeared and broken plates.\n\nGetting closer you spot a mouldering collar; confirm your suspicions the tag reads "Max". A door hangs open to the west, another to the south.',
     options: [
       {
         id: "open-door-to-kitchen",
@@ -589,7 +596,7 @@ export const ROOMS: Record<string, Room> = {
     id: "deeper-hallway",
     title: "Deeper Hallway",
     description:
-      "The hallway extends deeper into the gloom. Upon one wall someone has scrawled \"Never did I depart\" in what looks like blood.\n\nThere are doors to east and west. The eastward door is bolted with a padlock; you will need a crowbar to open it.",
+      'The hallway extends deeper into the gloom. Upon one wall someone has scrawled "Never did I depart" in what looks like blood.\n\nThere are doors to east and west. The eastward door is bolted with a padlock; you will need a crowbar to open it.',
     options: [
       {
         id: "go-south",
@@ -632,7 +639,7 @@ export const ROOMS: Record<string, Room> = {
     id: "common-room",
     title: "Common Room",
     description:
-      "The door creaks open revealing a room filled with broken and mildewed armchairs and sofa. Heavy curtains cover the windows. The smell of damp hangs in the room.\n\nThere is a door to the north marked \"Library\".",
+      'The door creaks open revealing a room filled with broken and mildewed armchairs and sofa. Heavy curtains cover the windows. The smell of damp hangs in the room.\n\nThere is a door to the north marked "Library".',
     options: [
       {
         id: "go-to-library",
@@ -678,7 +685,7 @@ export const ROOMS: Record<string, Room> = {
     id: "search-library",
     title: "Searched Library",
     description:
-      "Most of the books are textbooks from the seventies and eighties and of little interest, but prising one of the shelves from the wall reveals a hidden space.\n\nThere you find a small beautifully printed antique folio entitled \"Cultes des Goules\". It is a slim, elegant volume and although you cannot read the French text you sense there is something forbidden and depraved contained within its pages.",
+      'Most of the books are textbooks from the seventies and eighties and of little interest, but prising one of the shelves from the wall reveals a hidden space.\n\nThere you find a small beautifully printed antique folio entitled "Cultes des Goules". It is a slim, elegant volume and although you cannot read the French text you sense there is something forbidden and depraved contained within its pages.',
     options: [
       {
         id: "back-to-common-room",
@@ -768,7 +775,7 @@ export const ROOMS: Record<string, Room> = {
     id: "mould-room",
     title: "Black Mould Room",
     description:
-      "The door is stiff and only opens with a hard shove. But as you force your way in you are engulfed in a cloud of black mould.\n\nAre you wearing a respirator mask? If not, the mould gets into your eyes and lungs, blinding you and making you choke. You drop to your knees, struggling to breathe and fail to notice the shadowy presence stalking you. Cold hands close on your neck; your adventure ends here.\n\nIf you are wearing your respirator, you congratulate yourself on your preparedness and step back into the hallway.",
+      "The door is stiff and only opens with a hard shove. But as you force your way in you are engulfed in a cloud of black mould.\n\nAre you wearing a respirator mask? If you are wearing your respirator, you congratulate yourself on your preparedness and step back into the hallway.",
     options: [
       {
         id: "escape-with-respirator",
@@ -787,7 +794,7 @@ export const ROOMS: Record<string, Room> = {
     id: "death-in-the-mould",
     title: "Death in the Black Mould",
     description:
-      "Cold hands close on your neck. Your adventure ends here.",
+      "Without a respirator, the mould gets into your eyes and lungs, blinding you and making you choke. You drop to your knees, struggling to breathe, and fail to notice the shadowy presence stalking you.\n\nCold hands close on your neck. Your adventure ends here.",
     options: [
       {
         id: "return-to-front-porch",
@@ -816,6 +823,11 @@ export const ROOMS: Record<string, Room> = {
         id: "follow-landing-south",
         label: "Follow the landing south - west-landing-2",
         targetRoomId: "west-landing-2",
+      },
+      {
+        id: "back-to-balcony",
+        label: "Head back east to the balcony - balcony",
+        targetRoomId: "balcony",
       },
     ],
   },
@@ -940,11 +952,12 @@ export const ROOMS: Record<string, Room> = {
     id: "east-landing",
     title: "East Landing",
     description:
-      "Stepping east following the music you find yourself on a landing with two doors to the north and east; the corridor itself turns south. The music comes from the door to the north. You recognise the song as \"Three Imaginary Boys\" by The Cure, a cardboard sign on the door reads \"KEEP OUT\".",
+      'Stepping east following the music you find yourself on a landing with two doors to the north and east; the corridor itself turns south. The music comes from the door to the north. You recognise the song as "Three Imaginary Boys" by The Cure, a cardboard sign on the door reads "KEEP OUT".',
     options: [
       {
         id: "ignore-sign",
-        label: "Ignore the sign and go north to find the source of the music - guest-bedroom",
+        label:
+          "Ignore the sign and go north to find the source of the music - guest-bedroom",
         targetRoomId: "guest-bedroom",
       },
       {
@@ -956,6 +969,11 @@ export const ROOMS: Record<string, Room> = {
         id: "head-south-to-attic-stairs",
         label: "Head south - down the corridor - attic-staircase",
         targetRoomId: "attic-staircase",
+      },
+      {
+        id: "back-to-balcony",
+        label: "Go back west to the balcony - balcony",
+        targetRoomId: "balcony",
       },
     ],
   },
@@ -1099,17 +1117,19 @@ export const ROOMS: Record<string, Room> = {
     id: "tomb",
     title: "Tomb",
     description:
-      "With a loud creaking the metal door slowly swings open to reveal a damp chamber dominated by a large stone tomb raised above the water upon a dais. The tomb is carved with gargoyles supporting a heavy stone lid which has been partially pushed aside, revealing a dark interior.\n\nThe inscription reads: \"Sir Aubrey de Vere, 1751 - 1789\" and \"Fine gold to iron corruptible\". As you shine your light into the cavity of the turn you sense a presence moving behind you. Whirling round you are confronted by a tall figure cowled in black, with a skull-like visage and needle-like fangs.",
+      'With a loud creaking the metal door slowly swings open to reveal a damp chamber dominated by a large stone tomb raised above the water upon a dais. The tomb is carved with gargoyles supporting a heavy stone lid which has been partially pushed aside, revealing a dark interior.\n\nThe inscription reads: "Sir Aubrey de Vere, 1751 - 1789" and "Fine gold to iron corruptible". As you shine your light into the cavity of the turn you sense a presence moving behind you. Whirling round you are confronted by a tall figure cowled in black, with a skull-like visage and needle-like fangs.',
     options: [
       {
         id: "futile-fight",
-        label: "Swing your crowbar at the fiend (requires crowbar) - futile-fight",
+        label:
+          "Swing your crowbar at the fiend (requires crowbar) - futile-fight",
         targetRoomId: "futile-fight",
         requiredItems: ["crowbar"],
       },
       {
         id: "vampire-at-bay",
-        label: "Use the sign of the cross to drive off the undead (requires silver crucifix) - vampire-at-bay",
+        label:
+          "Use the sign of the cross to drive off the undead (requires silver crucifix) - vampire-at-bay",
         targetRoomId: "vampire-at-bay",
         requiredItems: ["silver-crucifix"],
       },
