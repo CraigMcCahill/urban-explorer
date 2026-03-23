@@ -102,12 +102,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "enter-house-via-door",
-        label: "Step through the front door - hallway",
+        label: "Step through the front door",
         targetRoomId: "hallway",
       },
       {
         id: "take-path-around-house",
-        label: "Take the path around the house - back-garden",
+        label: "Take the path around the house",
         targetRoomId: "back-garden",
       },
     ],
@@ -227,13 +227,13 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "take-north-door-to-garden",
-        label: "Take the door to the north into the garden - back-garden",
+        label: "Take the door to the north into the garden",
         targetRoomId: "back-garden",
         requiredItems: ["crowbar"],
       },
       {
         id: "take-east-door-to-dining",
-        label: "Take the door east - dining-room",
+        label: "Take the door east",
         targetRoomId: "dining-room",
       },
     ],
@@ -311,18 +311,18 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "take-iron-key",
-        label: "Take the iron key - iron-key",
+        label: "Take the iron key",
         targetRoomId: "attic",
         grantedItems: ["iron-key"],
       },
       {
         id: "read-parchment",
-        label: "Read the parchment - attic-parchment",
+        label: "Read the parchment",
         targetRoomId: "attic-parchment",
       },
       {
         id: "head-down-stairs",
-        label: "Head down the stairs - attic-staircase",
+        label: "Head down the stairs",
         targetRoomId: "attic-staircase",
       },
     ],
@@ -335,7 +335,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "back-to-attic",
-        label: "Return to the attic - attic",
+        label: "Return to the attic",
         targetRoomId: "attic",
       },
     ],
@@ -348,12 +348,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "climb-to-attic",
-        label: "Climb the staircase - attic",
+        label: "Climb the staircase",
         targetRoomId: "attic",
       },
       {
         id: "back-off-to-east-landing",
-        label: "Back off into the landing - east-landing",
+        label: "Back off into the landing",
         targetRoomId: "east-landing",
       },
     ],
@@ -493,13 +493,13 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "prize-backdoor",
-        label: "Prise open the backdoor - kitchen",
+        label: "Prise open the backdoor",
         targetRoomId: "kitchen",
         requiredItems: ["crowbar"],
       },
       {
         id: "return-to-front",
-        label: "Return to the front - front-porch",
+        label: "Return to the front",
         targetRoomId: "front-porch",
       },
     ],
@@ -512,22 +512,22 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "mount-stairs",
-        label: "Mount the stairs - balcony",
+        label: "Mount the stairs",
         targetRoomId: "balcony",
       },
       {
         id: "take-west-door",
-        label: "Take the west door - parlour",
+        label: "Take the west door",
         targetRoomId: "parlour",
       },
       {
         id: "open-east-door",
-        label: "Open the east door - common-room",
+        label: "Open the east door",
         targetRoomId: "common-room",
       },
       {
         id: "under-balcony",
-        label: "Move under the balcony north into the hall - deeper-hallway",
+        label: "Move under the balcony north into the hall",
         targetRoomId: "deeper-hallway",
       },
     ],
@@ -540,17 +540,17 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "music-east",
-        label: "Seek the source of the music to the east - east-landing",
+        label: "Seek the source of the music to the east",
         targetRoomId: "east-landing",
       },
       {
         id: "investigate-west",
-        label: "Investigate to the west - west-landing",
+        label: "Investigate to the west",
         targetRoomId: "west-landing",
       },
       {
         id: "back-downstairs",
-        label: "Go back down the stairs - hallway",
+        label: "Go back down the stairs",
         targetRoomId: "hallway",
       },
     ],
@@ -564,12 +564,12 @@ export const ROOMS: Record<string, Room> = {
       {
         id: "north-to-dining",
         label:
-          "Open the door to the north and find the source of the stench - dining-room",
+          "Open the door to the north and find the source of the stench",
         targetRoomId: "dining-room",
       },
       {
         id: "back-to-hallway",
-        label: "Retreat to the hallway - hallway",
+        label: "Retreat to the hallway",
         targetRoomId: "hallway",
       },
     ],
@@ -582,12 +582,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "open-door-to-kitchen",
-        label: "Go through the open door - kitchen",
+        label: "Go through the open door",
         targetRoomId: "kitchen",
       },
       {
         id: "go-south-to-parlour",
-        label: "Go south - parlour",
+        label: "Go south",
         targetRoomId: "parlour",
       },
     ],
@@ -600,24 +600,24 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "go-south",
-        label: "Go south down the hallway - hallway",
+        label: "Go south down the hallway",
         targetRoomId: "hallway",
       },
       {
         id: "leave-tag",
-        label: "Leave your tag on the wall - leave-tag",
+        label: "Leave your tag on the wall",
         targetRoomId: "leave-tag",
         requiredItems: ["spray"],
       },
       {
         id: "east-door-to-cell",
-        label: "Prise the door to the east - cell",
+        label: "Prise the door to the east",
         targetRoomId: "cell",
         requiredItems: ["crowbar"],
       },
       {
         id: "west-door-to-storeroom",
-        label: "Go through the west door - storeroom",
+        label: "Go through the west door",
         targetRoomId: "storeroom",
       },
     ],
@@ -630,7 +630,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "back-to-deeper-hallway",
-        label: "Back in the hallway - deeper-hallway",
+        label: "Back in the hallway",
         targetRoomId: "deeper-hallway",
       },
     ],
@@ -643,12 +643,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "go-to-library",
-        label: "Go north into the Library - library",
+        label: "Go north into the Library",
         targetRoomId: "library",
       },
       {
         id: "back-to-hallway",
-        label: "Retreat to the hall - hallway",
+        label: "Retreat to the hall",
         targetRoomId: "hallway",
       },
     ],
@@ -661,22 +661,22 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "search-library",
-        label: "Search the library - search-library",
+        label: "Search the library",
         targetRoomId: "search-library",
       },
       {
         id: "back-to-common-room",
-        label: "Return to the common room - common-room",
+        label: "Return to the common room",
         targetRoomId: "common-room",
       },
       {
         id: "climb-through-hole",
-        label: "Climb up through the hole - bedroom-with-hole",
+        label: "Climb up through the hole",
         targetRoomId: "bedroom-with-hole",
       },
       {
         id: "go-north-to-study",
-        label: "Go north - study",
+        label: "Go north",
         targetRoomId: "study",
       },
     ],
@@ -689,17 +689,17 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "back-to-common-room",
-        label: "Return to the common room - common-room",
+        label: "Return to the common room",
         targetRoomId: "common-room",
       },
       {
         id: "go-north-to-study",
-        label: "Go north - study",
+        label: "Go north",
         targetRoomId: "study",
       },
       {
         id: "climb-through-hole",
-        label: "Climb up through the hole - bedroom-with-hole",
+        label: "Climb up through the hole",
         targetRoomId: "bedroom-with-hole",
       },
     ],
@@ -712,12 +712,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "search-study",
-        label: "Search the study - search-study",
+        label: "Search the study",
         targetRoomId: "search-study",
       },
       {
         id: "back-to-library",
-        label: "Go back into the library - library",
+        label: "Go back into the library",
         targetRoomId: "library",
       },
     ],
@@ -730,12 +730,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "back-to-library",
-        label: "Go back into the library - library",
+        label: "Go back into the library",
         targetRoomId: "library",
       },
       {
         id: "down-to-secret-tunnel",
-        label: "Follow the steps into down into the basement - secret-tunnel",
+        label: "Follow the steps into down into the basement",
         targetRoomId: "secret-tunnel",
       },
     ],
@@ -748,7 +748,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "back-to-deeper-hallway",
-        label: "Return to the hall with a shudder - deeper-hallway",
+        label: "Return to the hall with a shudder",
         targetRoomId: "deeper-hallway",
       },
     ],
@@ -761,12 +761,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "back-to-deeper-hallway",
-        label: "Return to the hall - deeper-hallway",
+        label: "Return to the hall",
         targetRoomId: "deeper-hallway",
       },
       {
         id: "open-to-mould-room",
-        label: "Open the door to the west - mould-room",
+        label: "Open the door to the west",
         targetRoomId: "mould-room",
       },
     ],
@@ -779,13 +779,13 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "escape-with-respirator",
-        label: "Escape to the hallway - deeper-hallway",
+        label: "Escape to the hallway",
         targetRoomId: "deeper-hallway",
         requiredItems: ["mask"],
       },
       {
         id: "escape-without-respirator",
-        label: "Try to escape without a respirator - death-in-the-mould",
+        label: "Try to escape without a respirator",
         targetRoomId: "death-in-the-mould",
       },
     ],
@@ -798,7 +798,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "return-to-front-porch",
-        label: "Return to the start - front-porch",
+        label: "Return to the start",
         targetRoomId: "front-porch",
       },
     ],
@@ -811,22 +811,22 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "open-north-to-spare-room",
-        label: "Open the door to North - spare-room",
+        label: "Open the door to North",
         targetRoomId: "spare-room",
       },
       {
         id: "open-west-to-mirror-room",
-        label: "Open the door to the West - mirror-room",
+        label: "Open the door to the West",
         targetRoomId: "mirror-room",
       },
       {
         id: "follow-landing-south",
-        label: "Follow the landing south - west-landing-2",
+        label: "Follow the landing south",
         targetRoomId: "west-landing-2",
       },
       {
         id: "back-to-balcony",
-        label: "Head back east to the balcony - balcony",
+        label: "Head back east to the balcony",
         targetRoomId: "balcony",
       },
     ],
@@ -839,7 +839,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "return-to-west-landing",
-        label: "Return to the landing - west-landing",
+        label: "Return to the landing",
         targetRoomId: "west-landing",
       },
     ],
@@ -852,12 +852,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "search-mirror-room",
-        label: "Search the room - search-mirror-room",
+        label: "Search the room",
         targetRoomId: "search-mirror-room",
       },
       {
         id: "return-to-west-landing",
-        label: "Return to the landing - west-landing",
+        label: "Return to the landing",
         targetRoomId: "west-landing",
       },
     ],
@@ -870,7 +870,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "return-to-west-landing",
-        label: "Return to the landing - west-landing",
+        label: "Return to the landing",
         targetRoomId: "west-landing",
       },
     ],
@@ -883,17 +883,17 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "help-the-child",
-        label: "Open the left door to help the child - nursery",
+        label: "Open the left door to help the child",
         targetRoomId: "nursery",
       },
       {
         id: "open-crucifix-door",
-        label: "Open the door to the right - crucifix-room",
+        label: "Open the door to the right",
         targetRoomId: "crucifix-room",
       },
       {
         id: "back-to-stairs",
-        label: "Head back towards the stairs - west-landing",
+        label: "Head back towards the stairs",
         targetRoomId: "west-landing",
       },
     ],
@@ -906,12 +906,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "open-crucifix-door",
-        label: "Open the door to the right - crucifix-room",
+        label: "Open the door to the right",
         targetRoomId: "crucifix-room",
       },
       {
         id: "back-to-stairs",
-        label: "Head back towards the stairs - west-landing",
+        label: "Head back towards the stairs",
         targetRoomId: "west-landing",
       },
     ],
@@ -924,7 +924,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "back-to-landing",
-        label: "Return to the landing - west-landing-2-no-crying",
+        label: "Return to the landing",
         targetRoomId: "west-landing-2-no-crying",
       },
     ],
@@ -937,13 +937,13 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "take-silver-crucifix",
-        label: "Take the silver crucifix - silver-crucifix",
+        label: "Take the silver crucifix",
         targetRoomId: "crucifix-room",
         grantedItems: ["silver-crucifix"],
       },
       {
         id: "back-to-landing",
-        label: "Return to the landing: west-landing-2",
+        label: "Return to the landing",
         targetRoomId: "west-landing-2",
       },
     ],
@@ -957,22 +957,22 @@ export const ROOMS: Record<string, Room> = {
       {
         id: "ignore-sign",
         label:
-          "Ignore the sign and go north to find the source of the music - guest-bedroom",
+          "Ignore the sign and go north to find the source of the music",
         targetRoomId: "guest-bedroom",
       },
       {
         id: "east-door-to-hole-down",
-        label: "Open the door to the east - bedroom-with-hole-down",
+        label: "Open the door to the east",
         targetRoomId: "bedroom-with-hole-down",
       },
       {
         id: "head-south-to-attic-stairs",
-        label: "Head south - down the corridor - attic-staircase",
+        label: "Head south - down the corridor",
         targetRoomId: "attic-staircase",
       },
       {
         id: "back-to-balcony",
-        label: "Go back west to the balcony - balcony",
+        label: "Go back west to the balcony",
         targetRoomId: "balcony",
       },
     ],
@@ -985,12 +985,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "search-guest-room",
-        label: "Search the room - guest-room-searched",
+        label: "Search the room",
         targetRoomId: "guest-room-searched",
       },
       {
         id: "back-to-east-landing",
-        label: "Return to the landing - east-landing",
+        label: "Return to the landing",
         targetRoomId: "east-landing",
       },
     ],
@@ -1003,7 +1003,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "back-to-east-landing",
-        label: "Return to the landing - east-landing",
+        label: "Return to the landing",
         targetRoomId: "east-landing",
       },
     ],
@@ -1016,12 +1016,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "door-to-east-landing",
-        label: "Take the door to the west - east-landing",
+        label: "Take the door to the west",
         targetRoomId: "east-landing",
       },
       {
         id: "climb-down-to-library",
-        label: "Climb back down the hole - library",
+        label: "Climb back down the hole",
         targetRoomId: "library",
       },
     ],
@@ -1034,12 +1034,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "drop-to-library",
-        label: "Drop down the hole - library",
+        label: "Drop down the hole",
         targetRoomId: "library",
       },
       {
         id: "return-to-east-landing",
-        label: "Return to the landing - east-landing",
+        label: "Return to the landing",
         targetRoomId: "east-landing",
       },
     ],
@@ -1052,13 +1052,13 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "use-headlamp-to-get-phone",
-        label: "Use the headlight to climb down safely and search - get-phone",
+        label: "Use the headlight to climb down safely and search",
         targetRoomId: "get-phone",
         requiredItems: ["headlamp"],
       },
       {
         id: "grope-blind",
-        label: "Grope in the darkness blind - death-in-the-tunnel",
+        label: "Grope in the darkness blind",
         targetRoomId: "death-in-the-tunnel",
       },
     ],
@@ -1071,12 +1071,12 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "return-to-study",
-        label: "Cut your losses and return to the study above - study",
+        label: "Cut your losses and return to the study above",
         targetRoomId: "study",
       },
       {
         id: "press-on-to-iron-door",
-        label: "Press on through the shallow water - iron-door",
+        label: "Press on through the shallow water",
         targetRoomId: "iron-door",
       },
     ],
@@ -1089,7 +1089,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "return-to-start",
-        label: "Return to the start - front-porch",
+        label: "Return to the start",
         targetRoomId: "front-porch",
       },
     ],
@@ -1102,13 +1102,13 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "unlock-tomb",
-        label: "Unlock the door - tomb",
+        label: "Unlock the door",
         targetRoomId: "tomb",
         requiredItems: ["iron-key"],
       },
       {
         id: "leave-to-surface",
-        label: "Leave this place and return to the surface - library",
+        label: "Leave this place and return to the surface",
         targetRoomId: "library",
       },
     ],
@@ -1122,20 +1122,20 @@ export const ROOMS: Record<string, Room> = {
       {
         id: "futile-fight",
         label:
-          "Swing your crowbar at the fiend - futile-fight",
+          "Swing your crowbar at the fiend",
         targetRoomId: "futile-fight",
         requiredItems: ["crowbar"],
       },
       {
         id: "vampire-at-bay",
         label:
-          "Use the sign of the cross to drive off the undead - vampire-at-bay",
+          "Use the sign of the cross to drive off the undead",
         targetRoomId: "vampire-at-bay",
         requiredItems: ["silver-crucifix"],
       },
       {
         id: "attempt-flee",
-        label: "Attempt to flee - hunted",
+        label: "Attempt to flee",
         targetRoomId: "hunted",
       },
     ],
@@ -1148,7 +1148,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "return-to-start",
-        label: "Return to the start - front-porch",
+        label: "Return to the start",
         targetRoomId: "front-porch",
       },
     ],
@@ -1161,7 +1161,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "return-to-start",
-        label: "Return to the start - front-porch",
+        label: "Return to the start",
         targetRoomId: "front-porch",
       },
     ],
@@ -1174,7 +1174,7 @@ export const ROOMS: Record<string, Room> = {
     options: [
       {
         id: "return-to-start",
-        label: "Return to the start - front-porch",
+        label: "Return to the start",
         targetRoomId: "front-porch",
       },
     ],
