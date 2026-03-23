@@ -294,6 +294,20 @@ function App() {
                       .join(", ")}`
                   : null;
 
+              if (option.externalUrl) {
+                return (
+                  <a
+                    key={option.id}
+                    className="option-button"
+                    href={option.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="option-main-label">{option.label}</span>
+                  </a>
+                );
+              }
+
               return (
                 <button
                   key={option.id}

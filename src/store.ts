@@ -10,6 +10,7 @@ import {
 
 const ROOM_STORAGE_KEY = "urban-explorer.currentRoom";
 const INVENTORY_STORAGE_KEY = "urban-explorer.inventory";
+const ADVENTURE_ENDS_PHRASE = "Your adventure ends here.";
 
 export const MAX_INVENTORY_ITEMS = 2;
 
@@ -79,7 +80,7 @@ function getInitialState(): GameState {
   };
 }
 
-export const gameStore = createStore<GameState & GameActions>()((set) => ({
+export const gameStore = createStore<GameState & GameActions>()((set, get) => ({
   ...getInitialState(),
 
   hydrateFromStorage: () => set(getInitialState()),
@@ -123,6 +124,29 @@ export const gameStore = createStore<GameState & GameActions>()((set) => ({
 
   chooseRoomOption: (option, hasRequiredItems) => {
     if (!hasRequiredItems) return;
+
+    const state = get();
+    const currentRoom = state.currentRoomId ? ROOMS[state.currentRoomId] : null;
+    const shouldRepackGear =
+      option.targetRoomId === START_ROOM_ID &&
+      Boolean(currentRoom?.description.includes(ADVENTURE_ENDS_PHRASE));
+
+    if (shouldRepackGear) {
+      if (typeof window !== "undefined") {
+        window.localStorage.removeItem(ROOM_STORAGE_KEY);
+        window.localStorage.removeItem(INVENTORY_STORAGE_KEY);
+      }
+      set({
+        inventory: [],
+        hasChosenInventory: false,
+        hasSeenIntro: true,
+        currentRoomId: null,
+        isInventoryOpen: false,
+        recentlyAcquiredItems: [],
+      });
+      return;
+    }
+
     set((state) => {
       const nextInventory = [...state.inventory];
       const newly: ItemId[] = [];

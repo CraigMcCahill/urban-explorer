@@ -57,6 +57,7 @@ export type RoomOption = {
   id: string;
   label: string;
   targetRoomId: string;
+  externalUrl?: string;
   requiredItems?: ItemId[];
   grantedItems?: ItemId[];
 };
@@ -1176,6 +1177,12 @@ export const ROOMS: Record<string, Room> = {
         id: "return-to-start",
         label: "Return to the start",
         targetRoomId: "front-porch",
+      },
+      {
+        id: "read-more-spooky-stories",
+        label: "Read more spooky stories",
+        targetRoomId: "vampire-at-bay",
+        externalUrl: "https://craigmccahill.com/ghost-stories/",
       },
     ],
   },
