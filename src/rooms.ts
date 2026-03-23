@@ -229,7 +229,7 @@ export const ROOMS: Record<string, Room> = {
         id: "take-north-door-to-garden",
         label: "Take the door to the north into the garden - back-garden",
         targetRoomId: "back-garden",
-        requiredItems: ["mask"],
+        requiredItems: ["crowbar"],
       },
       {
         id: "take-east-door-to-dining",
