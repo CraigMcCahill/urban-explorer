@@ -10,6 +10,22 @@ import {
   useGameStore,
 } from "./store";
 
+const ADVENTURE_ENDS_PHRASE = "Your adventure ends here.";
+
+function renderRoomDescription(description: string) {
+  const parts = description.split(ADVENTURE_ENDS_PHRASE);
+
+  if (parts.length === 1) {
+    return description;
+  }
+
+  return parts.flatMap((part, index) =>
+    index < parts.length - 1
+      ? [part, <strong key={`adventure-ends-${index}`}>{ADVENTURE_ENDS_PHRASE}</strong>]
+      : [part],
+  );
+}
+
 function App() {
   const hasSeenIntro = useGameStore((s) => s.hasSeenIntro);
   const hasChosenInventory = useGameStore((s) => s.hasChosenInventory);
@@ -229,7 +245,7 @@ function App() {
 
         <main className="room-card">
           <h2 className="room-title">{room.title}</h2>
-          <p className="room-description">{room.description}</p>
+          <p className="room-description">{renderRoomDescription(room.description)}</p>
 
           <div className="divider" />
 
