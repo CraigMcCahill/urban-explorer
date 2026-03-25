@@ -56,6 +56,14 @@ function App() {
           </header>
 
           <main className="room-card intro-card">
+            <div className="home-hero-image-wrap">
+              <img
+                className="home-hero-image"
+                src={`${import.meta.env.BASE_URL}willow-house.jpg`}
+                alt="Willow House at night"
+                loading="eager"
+              />
+            </div>
             <h2 className="room-title">Before You Enter</h2>
             <p className="room-description">
               You are an urban explorer - breaking into abandoned buildings to
