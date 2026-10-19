@@ -59,7 +59,9 @@ function App() {
             <div className="home-hero-image-wrap">
               <img
                 className="home-hero-image"
-                src={`${import.meta.env.BASE_URL}willow-house.jpg`}
+                src={`${import.meta.env.BASE_URL}willow-house-2.jpg`}
+                width="1200"
+                height="675"
                 alt="Willow House at night"
                 loading="eager"
               />
