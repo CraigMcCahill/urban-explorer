@@ -5,11 +5,11 @@ body {
 }
 
 .app {
-  min-height: 100vh;
+  min-height: calc(100vh - 3.25rem);
   display: flex;
   align-items: stretch;
   justify-content: center;
-  padding: 2rem 1.5rem;
+  padding: 1rem 1.5rem 2rem;
 }
 
 .game-shell {
@@ -479,8 +479,8 @@ body {
 
 @media (max-width: 720px) {
   .app {
-    min-height: 100vh;
-    padding: 0;
+    min-height: calc(100vh - 3rem);
+    padding: 0.75rem 0 0;
   }
 
   .game-shell {
